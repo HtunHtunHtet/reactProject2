@@ -30,7 +30,6 @@ class App extends Component {
   render() {
 
     const {categories} = this.state;
-    console.log ({categories});
 
     return (
       <div>
