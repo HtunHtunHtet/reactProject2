@@ -23,13 +23,15 @@ class App extends Component {
 
     //fetch categories
     componentDidMount(){
-        fetchCategories().then((categories) => this.setState({categories}))
+        fetchCategories().
+            then((categories) => this.setState({categories}))
     }
 
 
   render() {
 
     const {categories} = this.state;
+    console.log(categories);
 
     return (
       <div>
@@ -45,8 +47,10 @@ class App extends Component {
                   <div className="tear-sheet-holder">
                   <MobileTearSheet>
                       <List>
+
+
                           <ListItem primaryText="all" leftIcon={<Archive />} />
-                          <ListItem primaryText="react" leftIcon={<Archive />} />
+                          <ListItem primaryText="React" leftIcon={<Archive />} />
                           <ListItem primaryText="Redux" leftIcon={<Archive />} />
                           <ListItem primaryText="Udacity" leftIcon={<Archive />} />
                       </List>
