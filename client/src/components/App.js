@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {fetchCategories} from "../actions";
 import '../App.css';
-import { fetchCategories }  from "../utils/api";
+
+
 
 //import  material ui components
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,28 +14,17 @@ import MobileTearSheet from '../components/TearSheet';
 import {List, ListItem} from 'material-ui/List';
 import Archive from 'material-ui/svg-icons/content/archive' ;
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
 import { withStyles } from 'material-ui/styles';
 
 //fetch all categories
 
 class App extends Component {
-    state = {
-        categories: []
-    }
-
-    //fetch categories
-    componentDidMount(){
-        fetchCategories().
-            then((categories) => this.setState({categories}))
+    componentDidMount() {
+        this.props.fetchCategories;
     }
 
 
   render() {
-
-    const {categories} = this.state;
-    console.log(categories);
-
     return (
       <div>
           <MuiThemeProvider>
@@ -47,8 +39,6 @@ class App extends Component {
                   <div className="tear-sheet-holder">
                   <MobileTearSheet>
                       <List>
-
-
                           <ListItem primaryText="all" leftIcon={<Archive />} />
                           <ListItem primaryText="React" leftIcon={<Archive />} />
                           <ListItem primaryText="Redux" leftIcon={<Archive />} />

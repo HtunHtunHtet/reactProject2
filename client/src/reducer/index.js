@@ -1,0 +1,1 @@
+import { RECEIVE_CATEGORIES } from "../actions";
