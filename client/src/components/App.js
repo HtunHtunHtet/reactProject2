@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
 import {fetchCategories} from "../actions";
+import { connect } from "react-redux";
 import '../App.css';
-
-
 
 //import  material ui components
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -13,19 +11,19 @@ import FontIcon from 'material-ui/FontIcon';
 import MobileTearSheet from '../components/TearSheet';
 import {List, ListItem} from 'material-ui/List';
 import Archive from 'material-ui/svg-icons/content/archive' ;
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {
+    Card,
+    CardHeader
+    } from 'material-ui/Card';
 import { withStyles } from 'material-ui/styles';
 
 //fetch all categories
 
 class App extends Component {
-    componentDidMount() {
-        this.props.fetchCategories;
-    }
-
 
   render() {
-    return (
+
+      return (
       <div>
           <MuiThemeProvider>
               <AppBar
