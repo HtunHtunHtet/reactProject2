@@ -19,3 +19,13 @@ export const getAllCategories = () =>
     fetch(`${ROOT_URL}/categories`, { headers })
         .then(res => res.json())
         .then(data => data.categories);
+
+export const getAllPosts = () =>
+    fetch (`${ROOT_URL}/posts`,{
+        headers
+    }).then (res => res.json());
+
+export const getComments = postId =>
+    fetch(`${ROOT_URL}/posts/${postId}/comments`, { headers }).then(response =>
+        response.json().then(data => data)
+    );
