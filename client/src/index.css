@@ -15,3 +15,7 @@ body {
 .card-holder {
   margin-top:20px;
 }
+
+.divider-pushtop{
+  margin-bottom:20px !important;
+}

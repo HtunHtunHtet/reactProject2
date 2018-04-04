@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import  * as action from '../actions'
 import AppBar from 'material-ui/AppBar';
+import Divider from 'material-ui/Divider';
 import Menu from './menu'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
@@ -46,6 +47,7 @@ class HomePage extends Component {
                                             <FlatButton label="Edit Posts" />
                                         </CardActions>
                                         <CardText expandable = {true}>
+                                            <Divider className="divider-pushtop" />
                                             {post.body}
                                         </CardText>
                                     </Card>
