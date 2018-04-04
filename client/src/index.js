@@ -17,7 +17,7 @@ const store = createStore(
     composeEnhancers(applyMiddleware(thunk, logger))
 )
 
-console.log(store.getState());
+console.log(store);
 
 ReactDOM.render(
     <Provider store={store}>
