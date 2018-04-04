@@ -12,7 +12,7 @@ class HomePage extends Component {
     render(){
         return(
             <MuiThemeProvider>
-                <div class="page-wrapper">
+                <div className="page-wrapper">
                     <AppBar
                         title="Readable"
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
