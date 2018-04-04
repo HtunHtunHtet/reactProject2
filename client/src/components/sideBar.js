@@ -2,16 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {fetchCategories} from "../actions";
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import FontIcon from 'material-ui/FontIcon';
+import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
+import Paper from 'material-ui/Paper';
+import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+
+
+const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
+const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
+const nearbyIcon = <IconLocationOn />;
 
 class SideBar extends Component {
-    state = {open:false}
-
-    handleToggle = () => this.setState({open: !this.state.open});
-
+    state = {selectedIndex:0}
+    select = (index) => this.setState({selectedIndex: index})
     //Get All Categories For Menu
     componentDidMount() {
         this.props.fetchCategories();
@@ -19,10 +23,25 @@ class SideBar extends Component {
     render(){
         const { receiveCategories } = this.props;
         return(
-            <Drawer open={this.state.open}>
-                <MenuItem>Menu Item</MenuItem>
-                <MenuItem>Menu Item 2</MenuItem>
-            </Drawer>
+            <Paper zDepth={1}>
+                <BottomNavigation selectedIndex={this.state.selectedIndex}>
+                    <BottomNavigationItem
+                        label="Recents"
+                        icon={nearbyIcon}
+                        onClick={() => this.select(0)}
+                    />
+                    <BottomNavigationItem
+                        label="Favorites"
+                        icon={nearbyIcon}
+                        onClick={() => this.select(1)}
+                    />
+                    <BottomNavigationItem
+                        label="Nearby"
+                        icon={nearbyIcon}
+                        onClick={() => this.select(2)}
+                    />
+                </BottomNavigation>
+            </Paper>
         )
     }
 }
