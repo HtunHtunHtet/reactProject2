@@ -2,6 +2,7 @@ import * as api from '../utils/api';
 
 export const RECEIVE_CATEGORIES= 'RECEIVE_CATEGORIES';
 export const RECEIVE_POSTS     = 'RECEIVE_POSTS';
+export const ADD_POSTS         = 'ADD_POSTS';
 
 export const receivePosts = posts => ({
     type: RECEIVE_POSTS,
@@ -36,3 +37,10 @@ export const fetchPosts = () => dispatch =>
         )
         .then(posts => dispatch(receivePosts(posts)));
 
+//add post
+export const addPost = post  => ({
+    type: ADD_POSTS,
+    post
+});
+export const fetchAddPost = post => dispatch =>
+    api.addPost(post).then(post => dispatch(addPost(post)));
