@@ -8,6 +8,8 @@ import Menu from './menu'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class HomePage extends Component {
 
@@ -56,6 +58,11 @@ class HomePage extends Component {
                                 )
                             )
                     }
+                    <Link to="/addpost">
+                        <FloatingActionButton className="add-post-holder">
+                            <ContentAdd />
+                        </FloatingActionButton>
+                    </Link>
 
                 </div>
             </MuiThemeProvider>
