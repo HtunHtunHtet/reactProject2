@@ -19,3 +19,7 @@ body {
 .divider-pushtop{
   margin-bottom:20px !important;
 }
+
+.text-center {
+  text-align:center;
+}

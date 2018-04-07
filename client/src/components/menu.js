@@ -23,19 +23,22 @@ class Menu extends Component {
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
                     {receiveCategories.length > 0 &&
                     receiveCategories.map((category,key) =>(
+                       <Link to={`/${category.name}`} className="text-center">
                         <BottomNavigationItem
                             label={category.name}
                             icon={nearbyIcon}
                             key={category}
                             onClick={() => this.select(key)}
                         />
+                        </Link>
                     ))}
-
-                    <BottomNavigationItem
-                        label="All"
-                        icon={nearbyIcon}
-                        onClick = {() => this.select(4)}
-                    />
+                    <Link to="/" className="text-center">
+                        <BottomNavigationItem
+                            label="All"
+                            icon={nearbyIcon}
+                            onClick = {() => this.select(4)}
+                        />
+                    </Link>
                 </BottomNavigation>
             </Paper>
         )

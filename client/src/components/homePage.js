@@ -21,11 +21,13 @@ class HomePage extends Component {
         return(
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
+                   <Link to="/">
                     <AppBar
                         title="Readable"
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onClick = {this.handleToggle}
                     />
+                   </Link>
                     <Menu/>
                 </div>
 
