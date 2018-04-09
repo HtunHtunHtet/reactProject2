@@ -2,7 +2,8 @@ import * as api from '../utils/api';
 
 export const RECEIVE_CATEGORIES= 'RECEIVE_CATEGORIES';
 export const RECEIVE_POSTS     = 'RECEIVE_POSTS';
-export const ADD_POSTS         = 'ADD_POSTS';
+export const ADD_POST          = 'ADD_POST';
+export const DELETE_POST       = "DELETE_POST";
 
 export const receivePosts = posts => ({
     type: RECEIVE_POSTS,
@@ -39,8 +40,17 @@ export const fetchPosts = () => dispatch =>
 
 //add post
 export const addPost = post  => ({
-    type: ADD_POSTS,
+    type: ADD_POST,
     post
 });
 export const fetchAddPost = post => dispatch =>
     api.addPost(post).then(post => dispatch(addPost(post)));
+
+//Delete Post
+export const deletePost = postId => ({
+    type: DELETE_POST,
+    postId
+});
+
+export const fetchDeletePost = postId => dispatch =>
+    api.deletePost(postId).then(post => dispatch(deletePost(postId)));

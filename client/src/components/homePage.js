@@ -18,8 +18,14 @@ class HomePage extends Component {
         this.props.fetchPosts();
     }
 
+    deletePost = postId => {
+        this.props.fetchDeletePost(postId);
+    };
+
+
     render(){
         const {posts} = this.props.posts;
+        console.log(this.props.posts);
         return(
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
@@ -47,7 +53,7 @@ class HomePage extends Component {
                                             showExpandableButton={true}
                                         />
                                         <CardActions>
-                                            <FlatButton label="Delete Posts" />
+                                            <FlatButton label="Delete Posts" onClick={() => this.deletePost(post.id)}/>
                                             <FlatButton label="Edit Posts" />
                                         </CardActions>
                                         <CardText expandable = {true}>

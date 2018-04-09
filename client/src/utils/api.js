@@ -39,3 +39,11 @@ export const addPost = post =>
         },
         body: JSON.stringify(post)
     }).then(data => data.json());
+
+//Delete Post
+export const deletePost = postId => {
+    return fetch(`${ROOT_URL}/posts/${postId}`, {
+        method: "DELETE",
+        headers
+    }).then(res => res);
+};

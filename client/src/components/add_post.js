@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAddPost } from "../actions";
 import Menu from './menu';
-// import uuidv1 from "uuid/v1";
+import uuidv1 from "uuid/v1";
 
 import AppBar from 'material-ui/AppBar';
 import { Link } from "react-router-dom";
@@ -22,14 +22,11 @@ class AddPost extends  Component {
 
     handleChange = (event, index, postCategory) => this.setState({postCategory});
 
-    handleSubmit(e){
+    handleSubmit = e =>{
         e.preventDefault();
-
         console.log(this.state);
-
-        return false;
-
         const data = {
+            id: uuidv1(),
             timestamp: Date.now(),
             title: this.state.postTitle,
             body: this.state.postContent,
