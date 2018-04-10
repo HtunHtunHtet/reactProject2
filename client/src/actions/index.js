@@ -4,6 +4,8 @@ export const RECEIVE_CATEGORIES= 'RECEIVE_CATEGORIES';
 export const RECEIVE_POSTS     = 'RECEIVE_POSTS';
 export const ADD_POST          = 'ADD_POST';
 export const DELETE_POST       = "DELETE_POST";
+export const EDIT_POST         = "EDIT_POST";
+export const GET_SINGLE_POST = "GET_SINGLE_POST";
 
 export const receivePosts = posts => ({
     type: RECEIVE_POSTS,
@@ -54,3 +56,20 @@ export const deletePost = postId => ({
 
 export const fetchDeletePost = postId => dispatch =>
     api.deletePost(postId).then(post => dispatch(deletePost(postId)));
+
+//edit post
+export const editPost = (post, postId) => ({
+    type: EDIT_POST,
+    post,
+    postId
+});
+export const fetchEditPost = (post, postId) => dispatch =>
+    api.editPost(post, postId).then(post => dispatch(editPost(post)));
+
+//get single post for edit
+export const receiveSinglePost = posts => ({
+    type: GET_SINGLE_POST,
+    posts
+});
+export const fetchSinglePost = postId => dispatch =>
+    api.getSinglePost(postId).then(posts => dispatch(receiveSinglePost(posts)));

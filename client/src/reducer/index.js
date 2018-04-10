@@ -2,7 +2,9 @@ import { combineReducers } from "redux";
 import { RECEIVE_CATEGORIES ,
          RECEIVE_POSTS,
          ADD_POST,
-        DELETE_POST
+         DELETE_POST,
+         EDIT_POST,
+         GET_SINGLE_POST
         } from "../actions";
 
 function receiveCategories (state = {} , action){
@@ -31,6 +33,10 @@ function posts (state= {} ,action){
                 ...state,
                 posts: availablePosts
             };
+        case EDIT_POST:
+            return { ...state, ...action.post };
+        case GET_SINGLE_POST:
+            return { ...state, posts: [action.posts] };
         default:
             return state;
     }

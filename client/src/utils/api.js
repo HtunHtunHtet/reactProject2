@@ -47,3 +47,21 @@ export const deletePost = postId => {
         headers
     }).then(res => res);
 };
+
+
+//Edit posts
+export const editPost = (post, postId) => {
+    return fetch(`${ROOT_URL}/posts/${postId}`, {
+        method: "PUT",
+        headers: {
+            ...headers,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(post)
+    }).then(data => data.json());
+};
+
+export const getSinglePost = postId =>
+    fetch(`${ROOT_URL}/posts/${postId}`, {
+        headers
+    }).then(res => res.json());

@@ -53,8 +53,16 @@ class HomePage extends Component {
                                             showExpandableButton={true}
                                         />
                                         <CardActions>
-                                            <FlatButton label="Delete Posts" onClick={() => this.deletePost(post.id)}/>
-                                            <FlatButton label="Edit Posts" />
+                                            <FlatButton
+                                                label="Delete Posts"
+                                                onClick={() => this.deletePost(post.id)}
+                                            />
+                                            <Link to={`/editpost/${post.id}`}>
+                                                <FlatButton
+                                                    label="Edit Posts"
+
+                                                />
+                                            </Link>
                                         </CardActions>
                                         <CardText expandable = {true}>
                                             <Divider className="divider-pushtop" />
