@@ -51,6 +51,7 @@ export const deletePost = postId => {
 
 //Edit posts
 export const editPost = (post, postId) => {
+    console.log(`${ROOT_URL}/posts/${postId}`);
     return fetch(`${ROOT_URL}/posts/${postId}`, {
         method: "PUT",
         headers: {

@@ -23,7 +23,7 @@ class EditPost extends  Component {
 
 
     componentDidMount() {
-        const {postId} = this.props.match.params;
+        const { postId } = this.props.match.params;
         this.props.fetchSinglePost(postId).then(() => {
             const { id, title, author, body, category } = this.props.posts.posts[0];
             this.setState({
@@ -40,18 +40,15 @@ class EditPost extends  Component {
 
     handleSubmit = e =>{
         e.preventDefault();
-        console.log(this.state);
+        const { id, postTitle, postCategory, postContent, postAuthor } = this.state;
         const data = {
-            id: uuidv1(),
-            timestamp: Date.now(),
-            title: this.state.postTitle,
-            body: this.state.postContent,
-            author: this.state.postAuthor,
-            category: this.state.postCategory,
-            deleted: false,
-            voteScore: 1
+            id: id,
+            title: postTitle,
+            body: postContent,
+            author: postAuthor,
+            category:postCategory
         };
-        this.props.fetchEditPost(data);
+        this.props.fetchEditPost(data,data.id);
         this.props.history.push("/");
     }
 
@@ -66,7 +63,7 @@ class EditPost extends  Component {
     };
 
     render() {
-        console.log("current Props",this.state);
+        console.log(this.state);
         return (
                 <MuiThemeProvider>
                     <div>

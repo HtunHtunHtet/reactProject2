@@ -25,7 +25,6 @@ class HomePage extends Component {
 
     render(){
         const {posts} = this.props.posts;
-        console.log(this.props.posts);
         return(
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
