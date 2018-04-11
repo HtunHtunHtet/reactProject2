@@ -33,6 +33,7 @@ class HomePage extends Component {
                         title="Readable"
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
                         onClick = {this.handleToggle}
+                        className = "logoHead"
                     />
                    </Link>
                     <Menu/>

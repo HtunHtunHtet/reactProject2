@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {fetchCategories} from "../actions";
+import {fetchCategories, fetchPostsCategory } from "../actions";
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
@@ -14,8 +14,14 @@ class Menu extends Component {
     componentDidMount() {
         this.props.fetchCategories();
     }
+
+    getPostsByCategory = category => {
+        this.props.fetchPostsCategory(category);
+    };
+
     render(){
         const { receiveCategories } = this.props;
+        console.log(this.props);
         return(
             <Paper zDepth={1}>
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
@@ -25,8 +31,8 @@ class Menu extends Component {
                         <BottomNavigationItem
                             label={category.name}
                             icon={nearbyIcon}
-                            key={category}
-                            onClick={() => this.select(key)}
+                            key={category.path}
+                            onClick={() => this.getPostsByCategory(category.name)}
                         />
                         </Link>
                     ))}
@@ -48,5 +54,5 @@ const mapStateToProps = ({ receiveCategories }) => ({
 });
 
 export default connect(mapStateToProps,{
-    fetchCategories
+    fetchCategories,fetchPostsCategory
 })(Menu)

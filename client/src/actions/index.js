@@ -1,11 +1,19 @@
 import * as api from '../utils/api';
 
-export const RECEIVE_CATEGORIES= 'RECEIVE_CATEGORIES';
-export const RECEIVE_POSTS     = 'RECEIVE_POSTS';
-export const ADD_POST          = 'ADD_POST';
-export const DELETE_POST       = "DELETE_POST";
-export const EDIT_POST         = "EDIT_POST";
-export const GET_SINGLE_POST   = "GET_SINGLE_POST";
+export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+export const RECEIVE_POSTS      = 'RECEIVE_POSTS';
+export const ADD_POST           = 'ADD_POST';
+export const DELETE_POST        = "DELETE_POST";
+export const EDIT_POST          = "EDIT_POST";
+export const GET_SINGLE_POST    = "GET_SINGLE_POST";
+export const GET_POSTS_CATEGORY = "GET_POSTS_CATEGORY";
+export const GET_COMMENTS       = "GET_COMMENTS";
+export const GET_COMMENT        = "GET_COMMENT";
+export const ADD_COMMENT        = "ADD_COMMENT";
+export const DELETE_COMMENT     = "DELETE_COMMENT";
+export const EDIT_COMMENT       = "EDIT_COMMENT";
+export const VOTE_COMMENT       = "VOTE_COMMENT";
+export const VOTE               = "VOTE";
 
 export const receivePosts = posts => ({
     type: RECEIVE_POSTS,
@@ -73,3 +81,86 @@ export const receiveSinglePost = posts => ({
 });
 export const fetchSinglePost = postId => dispatch =>
     api.getSinglePost(postId).then(posts => dispatch(receiveSinglePost(posts)));
+
+export const fetchPostsCategory = category => dispatch =>
+    api
+        .fetchPostsCategory(category)
+        .then(posts =>
+            Promise.all(
+                posts.map(post =>
+                    api
+                        .getComments(post.id)
+                        .then(comments => (post.comments = comments))
+                        .then(() => post)
+                )
+            )
+        )
+        .then(posts => dispatch(getPostsCategory(posts)));
+
+export const getPostsCategory = posts => ({
+    type: GET_POSTS_CATEGORY,
+    posts
+});
+
+export const getComments = comments => ({
+    type: GET_COMMENTS,
+    comments
+});
+
+export const fetchComments = postId => dispatch =>
+    api.getComments(postId).then(comments => dispatch(getComments(comments)));
+
+//comment action
+export const receiveComment = comments => ({
+    type: GET_COMMENT,
+    comments
+});
+
+//comment add
+export const addComment = comment => ({
+    type: ADD_COMMENT,
+    comment
+});
+export const fetchAddComment = comment => dispatch =>
+    api.addComment(comment).then(comment => dispatch(addComment(comment)));
+
+// delete comment
+export const deleteComment = commentId => ({
+    type: DELETE_COMMENT,
+    commentId
+});
+export const fetchDeleteComment = commentId => dispatch =>
+    api
+        .deleteComment(commentId)
+        .then(comment => dispatch(deleteComment(commentId)));
+
+export const editComment = (comment, commentId) => ({
+    type: EDIT_COMMENT,
+    comment,
+    commentId
+});
+
+export const fetchEditComment = (comment, commentId) => dispatch =>
+    api
+        .editComment(comment, commentId)
+        .then(comment => dispatch(editComment(comment)));
+
+//vote POST
+export const votePost = post => ({
+    type: VOTE,
+    payload: post
+});
+
+export const fetchVotePost = (postId, option) => dispatch =>
+    api.votePost(postId, option).then(post => dispatch(votePost(post)));
+
+//vote comment
+export const voteComment = (commentId, option) => ({
+    type: VOTE_COMMENT,
+    commentId
+});
+
+export const fetchVoteComment = (commentId, option) => dispatch =>
+    api
+        .voteComment(commentId, option)
+        .then(comment => dispatch(voteComment(comment)));

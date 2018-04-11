@@ -63,7 +63,6 @@ class EditPost extends  Component {
     };
 
     render() {
-        console.log(this.state);
         return (
                 <MuiThemeProvider>
                     <div>
