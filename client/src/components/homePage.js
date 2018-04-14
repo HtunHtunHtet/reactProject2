@@ -10,6 +10,10 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
+import Thumbup from 'material-ui/svg-icons/action/thumb-up';
+import Thumbdown from 'material-ui/svg-icons/action/thumb-down';
+import Chip from 'material-ui/Chip';
 
 class HomePage extends Component {
 
@@ -20,6 +24,14 @@ class HomePage extends Component {
 
     deletePost = postId => {
         this.props.fetchDeletePost(postId);
+    };
+
+    iconThumbsUp = (postId, option) => {
+        this.props.fetchVotePost(postId, "upVote");
+    };
+
+    iconThumbsDown = (postId, option) => {
+        this.props.fetchVotePost(postId, "downVote");
     };
 
 
@@ -50,9 +62,55 @@ class HomePage extends Component {
                                             title={post.title}
                                             subtitle= {post.author}
                                             actAsExpander={true}
-                                            showExpandableButton={true}
                                         />
                                         <CardActions>
+                                            <div className="thumbsholder">
+                                                <div>
+                                                   <Thumbup
+                                                       className="thumbupdown"
+                                                       color={greenA200}
+                                                       hoverColor={blue500}
+                                                       onClick={() => this.iconThumbsUp(post.id, "upVote")}
+                                                   />
+                                                </div>
+                                                <div>
+                                                    <Chip className= "chips">
+                                                        {post.voteScore}
+                                                    </Chip>
+                                                </div>
+                                                <div>
+                                                    <Thumbdown
+                                                        className="thumbupdown"
+                                                        color={red500}
+                                                        hoverColor={grey800}
+                                                        onClick={() => this.iconThumbsDown(post.id, "downVote")}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                           {/* <Badge badgeContent={post.voteScore} secondary={true} badgeStyle={{top: 12, right: 12}}>
+                                                <IconButton tooltip="Like">
+                                                    <Thumbup
+                                                        className="thumbupdown"
+                                                        color={greenA200}
+                                                        hoverColor={blue500}
+                                                        onClick={() => this.iconThumbsUp(post.id, "upVote")}
+                                                    />
+                                                </IconButton>
+                                            </Badge>
+
+                                            <Badge badgeContent={post.voteScore} secondary={true} badgeStyle={{top: 12, right: 12}}>
+                                                <IconButton tooltip="Dislike">
+                                                    <Thumbdown
+                                                        className="thumbupdown"
+                                                        color={red500}
+                                                        hoverColor={grey800}
+                                                        onClick={() =>
+                                                        this.iconThumbsDown(post.id, "downVote")}
+                                                    />
+                                                </IconButton>
+                                            </Badge>*/}
+                                            <br/>
                                             <FlatButton
                                                 label="Delete Posts"
                                                 onClick={() => this.deletePost(post.id)}
@@ -60,7 +118,6 @@ class HomePage extends Component {
                                             <Link to={`/editpost/${post.id}`}>
                                                 <FlatButton
                                                     label="Edit Posts"
-
                                                 />
                                             </Link>
                                         </CardActions>

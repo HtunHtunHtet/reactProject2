@@ -18,7 +18,11 @@ import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import Thumbup from 'material-ui/svg-icons/action/thumb-up';
+import Thumbdown from 'material-ui/svg-icons/action/thumb-down';
+import Chip from 'material-ui/Chip';
 import uuidv1 from "uuid/v1";
+import {blue500, greenA200, grey800, red500} from "material-ui/styles/colors";
 
 class PostDetail extends Component {
     state = {
@@ -38,6 +42,14 @@ class PostDetail extends Component {
 
     onDeleteComment = commentId => {
         this.props.deleteComment(commentId);
+    };
+
+    iconThumbsUp = (postId, option) => {
+        this.props.fetchVotePost(postId, "upVote");
+    };
+
+    iconThumbsDown = (postId, option) => {
+        this.props.fetchVotePost(postId, "downVote");
     };
 
     render() {
@@ -69,9 +81,32 @@ class PostDetail extends Component {
                                         title={post.title}
                                         subtitle= {post.author}
                                         actAsExpander={true}
-                                        showExpandableButton={true}
                                     />
                                     <CardActions>
+                                        <div className="thumbsholder">
+                                            <div>
+                                                <Thumbup
+                                                    className="thumbupdown"
+                                                    color={greenA200}
+                                                    hoverColor={blue500}
+                                                    onClick={() => this.iconThumbsUp(post.id, "upVote")}
+                                                />
+                                            </div>
+                                            <div>
+                                                <Chip className= "chips">
+                                                    {post.voteScore}
+                                                </Chip>
+                                            </div>
+                                            <div>
+                                                <Thumbdown
+                                                    className="thumbupdown"
+                                                    color={red500}
+                                                    hoverColor={grey800}
+                                                    onClick={() => this.iconThumbsDown(post.id, "downVote")}
+                                                />
+                                            </div>
+                                        </div>
+
                                         <FlatButton
                                             label="Delete Posts"
                                             onClick={() => this.deletePost(post.id)}

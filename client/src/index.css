@@ -32,3 +32,17 @@ body {
 .logoHead{
   text-decoration:none;
 }
+
+svg.thumbupdown {
+  margin-left: 11px;
+  margin-right:10px;
+}
+
+.chip {
+  margin: 4px;
+  margin-left:10px !important;
+}
+
+.thumbsholder{
+  display:flex;
+}
