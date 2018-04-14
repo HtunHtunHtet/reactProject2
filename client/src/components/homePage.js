@@ -1,16 +1,12 @@
 import React, {Component} from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import  * as action from '../actions'
 import AppBar from 'material-ui/AppBar';
 import Divider from 'material-ui/Divider';
 import Menu from './menu'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
 import Thumbup from 'material-ui/svg-icons/action/thumb-up';
 import Thumbdown from 'material-ui/svg-icons/action/thumb-down';
 import SvgIconFace from 'material-ui/svg-icons/action/face';
@@ -18,6 +14,10 @@ import Clock from 'material-ui/svg-icons/action/alarm';
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
 import Timestamp from "react-timestamp";
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 class HomePage extends Component {
