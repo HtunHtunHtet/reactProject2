@@ -23,6 +23,10 @@ import Thumbdown from 'material-ui/svg-icons/action/thumb-down';
 import Chip from 'material-ui/Chip';
 import uuidv1 from "uuid/v1";
 import {blue500, greenA200, grey800, red500} from "material-ui/styles/colors";
+import Timestamp from "react-timestamp";
+import Avatar from 'material-ui/Avatar';
+import SvgIconFace from 'material-ui/svg-icons/action/face';
+import Clock from 'material-ui/svg-icons/action/alarm';
 
 class PostDetail extends Component {
     state = {
@@ -79,10 +83,27 @@ class PostDetail extends Component {
                                 <Card className="card-holder">
                                     <CardHeader
                                         title={post.title}
-                                        subtitle= {post.author}
                                         actAsExpander={false}
                                     />
                                     <CardActions>
+                                        <div className="details-holder">
+                                            <div>
+                                                <Chip>
+                                                    <Avatar color="#444" icon={<SvgIconFace />} />
+                                                    {post.author}
+                                                </Chip>
+                                            </div>
+                                            <div>
+                                                <Chip>
+                                                    <Avatar color="#444" icon={<Clock />} />
+                                                    <Timestamp
+                                                        time={post.timestamp / 1000}
+                                                        format="full"
+                                                    />
+                                                </Chip>
+                                            </div>
+                                        </div>
+
                                         <div className="thumbsholder">
                                             <div>
                                                 <Thumbup
