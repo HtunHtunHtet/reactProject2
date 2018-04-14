@@ -80,7 +80,7 @@ class PostDetail extends Component {
                                     <CardHeader
                                         title={post.title}
                                         subtitle= {post.author}
-                                        actAsExpander={true}
+                                        actAsExpander={false}
                                     />
                                     <CardActions>
                                         <div className="thumbsholder">

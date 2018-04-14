@@ -45,4 +45,13 @@ svg.thumbupdown {
 
 .thumbsholder{
   display:flex;
+  margin-top:20px;
+}
+
+.details-holder{
+  display:flex;
+}
+
+.details-holder div{
+  margin-right:20px;
 }

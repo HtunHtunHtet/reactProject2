@@ -13,7 +13,12 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
 import Thumbup from 'material-ui/svg-icons/action/thumb-up';
 import Thumbdown from 'material-ui/svg-icons/action/thumb-down';
+import SvgIconFace from 'material-ui/svg-icons/action/face';
+import Clock from 'material-ui/svg-icons/action/alarm';
 import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
+import Timestamp from "react-timestamp";
+
 
 class HomePage extends Component {
 
@@ -60,10 +65,27 @@ class HomePage extends Component {
                                     <Card className="card-holder">
                                         <CardHeader
                                             title={post.title}
-                                            subtitle= {post.author}
-                                            actAsExpander={true}
+                                            actAsExpander={false}
                                         />
                                         <CardActions>
+                                            <div className="details-holder">
+                                                <div>
+                                                    <Chip>
+                                                        <Avatar color="#444" icon={<SvgIconFace />} />
+                                                        {post.author}
+                                                    </Chip>
+                                                </div>
+                                                <div>
+                                                    <Chip>
+                                                        <Avatar color="#444" icon={<Clock />} />
+                                                        <Timestamp
+                                                            time={post.timestamp / 1000}
+                                                            format="full"
+                                                        />
+                                                    </Chip>
+                                                </div>
+                                            </div>
+
                                             <div className="thumbsholder">
                                                 <div>
                                                    <Thumbup
