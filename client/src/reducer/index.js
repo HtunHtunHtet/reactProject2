@@ -12,7 +12,8 @@ import { RECEIVE_CATEGORIES ,
          DELETE_COMMENT,
          EDIT_COMMENT,
          VOTE,
-         VOTE_COMMENT
+         VOTE_COMMENT,
+         CHANGE_SORT
         } from "../actions";
 
 function receiveCategories (state = {} , action){
@@ -104,6 +105,19 @@ function getComments(state = {}, action) {
     }
 }
 
+function sort(state = { sort: "popular" }, action) {
+    switch (action.type) {
+        case CHANGE_SORT:
+            const newValue = action.value;
+            return {
+                ...state,
+                sort: newValue
+            };
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
-    receiveCategories, posts ,receiveComment , getComments
+    receiveCategories, posts ,receiveComment , getComments ,sort
 });

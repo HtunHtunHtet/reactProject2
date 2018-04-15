@@ -63,10 +63,12 @@ class HomePage extends Component {
                             posts.map(
                                 post=>(
                                     <Card className="card-holder">
-                                        <CardHeader
-                                            title={post.title}
-                                            actAsExpander={false}
-                                        />
+                                        <Link to={`/${post.category}/${post.id}`}>
+                                            <CardHeader
+                                                title={post.title}
+                                                actAsExpander={false}
+                                            />
+                                        </Link>
                                         <CardActions>
                                             <div className="details-holder">
                                                 <div>

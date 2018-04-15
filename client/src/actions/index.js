@@ -14,6 +14,7 @@ export const DELETE_COMMENT     = "DELETE_COMMENT";
 export const EDIT_COMMENT       = "EDIT_COMMENT";
 export const VOTE_COMMENT       = "VOTE_COMMENT";
 export const VOTE               = "VOTE";
+export const CHANGE_SORT = "CHANGE_SORT";
 
 export const receivePosts = posts => ({
     type: RECEIVE_POSTS,
@@ -164,3 +165,10 @@ export const fetchVoteComment = (commentId, option) => dispatch =>
     api
         .voteComment(commentId, option)
         .then(comment => dispatch(voteComment(comment)));
+
+export const changeSortAction = value => {
+    return {
+        type: CHANGE_SORT,
+        value: value
+    };
+};
