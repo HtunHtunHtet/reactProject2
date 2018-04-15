@@ -34,26 +34,35 @@ class PostDetail extends Component {
         commentContent: ""
     };
 
-    deletePost = postId => {
-        this.props.deletePost(postId);
-    };
-
-    //fetch single post by post id
     componentDidMount() {
         this.props.fetchPost(this.props.match.params.post_id);
         console.log(this.props.fetchPost(this.props.match.params.post_id));
     }
+
+    deletePost = postId => {
+        this.props.deletePost(postId);
+    };
 
     onDeleteComment = commentId => {
         this.props.deleteComment(commentId);
     };
 
     iconThumbsUp = (postId, option) => {
-        this.props.fetchVotePost(postId, "upVote");
+        this.props.votePost(postId, "upVote");
     };
 
     iconThumbsDown = (postId, option) => {
-        this.props.fetchVotePost(postId, "downVote");
+        this.props.votePost(postId, "downVote");
+    };
+
+    iconThumbsUpComment = (commentId, option) => {
+        console.log("up is clicked");
+        this.props.voteComment(commentId, "upVote");
+    };
+
+    iconThumbsDownComment = (commentId, option) => {
+        console.log("down is clicked");
+        this.props.voteComment(commentId, "downVote");
     };
 
     render() {
@@ -139,7 +148,7 @@ class PostDetail extends Component {
                                             />
                                         </Link>
                                     </CardActions>
-                                    <CardText expandable = {true}>
+                                    <CardText expandable = {false}>
                                         <Divider className="divider-pushtop" />
                                         {post.body}
                                     </CardText>
