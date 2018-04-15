@@ -10,6 +10,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Thumbup from 'material-ui/svg-icons/action/thumb-up';
 import Thumbdown from 'material-ui/svg-icons/action/thumb-down';
 import SvgIconFace from 'material-ui/svg-icons/action/face';
+import Comment  from 'material-ui/svg-icons/action/feedback';
 import Clock from 'material-ui/svg-icons/action/alarm';
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
@@ -98,6 +99,13 @@ class Categories extends Component {
                                                         time={post.timestamp / 1000}
                                                         format="full"
                                                     />
+                                                </Chip>
+                                            </div>
+
+                                            <div>
+                                                <Chip>
+                                                    <Avatar color="#444" icon={<Comment />} />
+                                                    {post.comments && post.comments.length}
                                                 </Chip>
                                             </div>
                                         </div>

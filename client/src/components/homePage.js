@@ -19,6 +19,7 @@ import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import SortBy from "./sortBy";
+import Comment  from 'material-ui/svg-icons/action/feedback';
 
 class HomePage extends Component {
 
@@ -125,6 +126,12 @@ class HomePage extends Component {
                                                         hoverColor={grey800}
                                                         onClick={() => this.iconThumbsDown(post.id, "downVote")}
                                                     />
+                                                </div>
+                                                <div>
+                                                    <Chip>
+                                                        <Avatar color="#444" icon={<Comment />} />
+                                                        {post.comments && post.comments.length}
+                                                    </Chip>
                                                 </div>
                                             </div>
 
