@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchAddPost } from "../actions";
 import Menu from './menu';
 import uuidv1 from "uuid/v1";
-
 import AppBar from 'material-ui/AppBar';
 import { Link } from "react-router-dom";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -50,7 +49,6 @@ class AddPost extends  Component {
     };
 
     render() {
-        console.log(this.state);
         return (
                 <MuiThemeProvider>
                     <div>

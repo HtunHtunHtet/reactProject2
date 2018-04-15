@@ -21,7 +21,6 @@ class Menu extends Component {
 
     render(){
         const { receiveCategories } = this.props;
-        console.log(this.props);
         return(
             <Paper zDepth={1}>
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
@@ -43,6 +42,7 @@ class Menu extends Component {
                             onClick = {() => this.select(4)}
                         />
                     </Link>
+
                 </BottomNavigation>
             </Paper>
         )

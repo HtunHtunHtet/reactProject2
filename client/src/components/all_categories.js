@@ -18,6 +18,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import SortBy from "./sortBy";
 
 class Categories extends Component {
     componentDidMount() {
@@ -39,6 +40,7 @@ class Categories extends Component {
 
     render(){
         const {posts} = this.props.posts;
+        const {sort}  = this.props.sort;
         return (
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
@@ -55,9 +57,24 @@ class Categories extends Component {
 
                 {/*Cards */}
                 <div className="cards-wrapper">
+                    <SortBy/>
                     {
                         posts && posts.length > 0 &&
-                        posts.map(
+                        posts
+                            .filter(post => !post.deleted)
+                            .sort((a, b) => {
+                                switch (sort.value) {
+                                    case "unpopular":
+                                        return a.voteScore - b.voteScore;
+                                    case "oldest":
+                                        return a.timestamp - b.timestamp;
+                                    case "newest":
+                                        return b.timestamp - a.timestamp;
+                                    default:
+                                        return b.voteScore - a.voteScore;
+                                }
+                            })
+                            .map(
                             post=>(
                                 <Card className="card-holder">
                                     <Link to={`/${post.category}/${post.id}`}>

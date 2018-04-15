@@ -18,7 +18,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import {blue500, red500, greenA200 , grey800} from 'material-ui/styles/colors';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
+import SortBy from "./sortBy";
 
 class HomePage extends Component {
 
@@ -42,6 +42,7 @@ class HomePage extends Component {
 
     render(){
         const {posts} = this.props.posts;
+        const { sort } = this.props.sort;
         return(
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
@@ -58,9 +59,24 @@ class HomePage extends Component {
 
                 {/*Cards */}
                 <div className="cards-wrapper">
+                    <SortBy/>
                     {
                         posts && posts.length > 0 &&
-                            posts.map(
+                        posts
+                            .filter(post => !post.deleted)
+                            .sort((a, b) => {
+                                switch (sort.value) {
+                                    case "unpopular":
+                                        return a.voteScore - b.voteScore;
+                                    case "oldest":
+                                        return a.timestamp - b.timestamp;
+                                    case "newest":
+                                        return b.timestamp - a.timestamp;
+                                    default:
+                                        return b.voteScore - a.voteScore;
+                                }
+                            })
+                            .map(
                                 post=>(
                                     <Card className="card-holder">
                                         <Link to={`/${post.category}/${post.id}`}>
@@ -138,10 +154,12 @@ class HomePage extends Component {
                                             <FlatButton
                                                 label="Delete Posts"
                                                 onClick={() => this.deletePost(post.id)}
+                                                secondary={true}
                                             />
                                             <Link to={`/editpost/${post.id}`}>
                                                 <FlatButton
                                                     label="Edit Posts"
+                                                    primary={true}
                                                 />
                                             </Link>
                                         </CardActions>
@@ -165,6 +183,6 @@ class HomePage extends Component {
     }
 }
 
-const mapStateToProps = ({posts}) => ({posts});
+const mapStateToProps = ({posts,sort}) => ({posts,sort});
 
 export default connect(mapStateToProps,action) (HomePage);

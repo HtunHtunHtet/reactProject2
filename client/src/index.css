@@ -45,13 +45,67 @@ svg.thumbupdown {
 
 .thumbsholder{
   display:flex;
-  margin-top:20px;
 }
 
 .details-holder{
   display:flex;
+  margin-bottom:20px;
 }
 
 .details-holder div{
   margin-right:20px;
+}
+.post-body {
+  padding: 20px;
+  background: #dcdcdc8c;
+  margin-top: 15px;
+}
+
+.comment-wrapper {
+  border: 1px solid darkgray;
+  padding: 20px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+
+.comment-thumbsholder{
+  margin-top:0px;
+}
+
+.comment-holder {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px !important;
+  border: 1.5px solid #6495edb3;
+  padding: 10px;
+  background: #d3d3d354;
+}
+
+.add-comment-holder {
+  max-width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 2px;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.body-holder {
+  padding: 20px;
+  background: #00000008;
+  margin-top: 13px;
+}
+
+.thumbsholder-total{
+  display: flex;
+  margin-top:20px;
+  justify-content: space-between;
+}
+
+.margin-top-20px{
+  padding:20px;
 }
