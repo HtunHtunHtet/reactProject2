@@ -117,6 +117,11 @@ export const receiveComment = comments => ({
     comments
 });
 
+export const fetchComment = commentId => dispatch =>
+    api
+        .getComment(commentId)
+        .then(comments => dispatch(receiveComment(comments)));
+
 //comment add
 export const addComment = comment => ({
     type: ADD_COMMENT,
@@ -172,3 +177,5 @@ export const changeSortAction = value => {
         value: value
     };
 };
+
+

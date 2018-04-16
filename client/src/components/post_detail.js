@@ -26,6 +26,9 @@ import SvgIconFace from 'material-ui/svg-icons/action/face';
 import Clock from 'material-ui/svg-icons/action/alarm';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Delete from 'material-ui/svg-icons/action/delete';
+import EditChange from 'material-ui/svg-icons/action/track-changes';
+
 
 class PostDetail extends Component {
     state = {
@@ -259,6 +262,19 @@ class PostDetail extends Component {
                                                                     />
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div className="comment-buttons-holder">
+                                                            <FlatButton
+                                                                icon={<Delete />}
+                                                                secondary={true}
+                                                                onClick={() => this.onDeleteComment(comment.id)}
+                                                            />
+                                                            <Link to={`/editComment/${comment.id}`}>
+                                                                <FlatButton
+                                                                    icon={<EditChange className="editComment"/>}
+                                                                    primary={true}
+                                                                />
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 ))}

@@ -31,6 +31,12 @@ export const getComments = postId =>
         response.json().then(data => data)
     );
 
+//get single comment for editing
+export const getComment = commentId =>
+    fetch(`${ROOT_URL}/comments/${commentId}`, { headers }).then(res =>
+        res.json().then(data => data)
+    );
+
 export const addComment = comment => {
     const body = JSON.stringify(comment);
 

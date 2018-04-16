@@ -109,3 +109,13 @@ svg.thumbupdown {
 .margin-top-20px{
   padding:20px;
 }
+
+.comment-buttons-holder {
+  text-align: right;
+  margin-top: 13px;
+}
+
+.deleteComment {
+  color:red;
+}
+
