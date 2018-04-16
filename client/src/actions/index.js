@@ -140,6 +140,7 @@ export const fetchDeleteComment = commentId => dispatch =>
         .deleteComment(commentId)
         .then(comment => dispatch(deleteComment(commentId)));
 
+//edit comment
 export const editComment = (comment, commentId) => ({
     type: EDIT_COMMENT,
     comment,
@@ -161,7 +162,7 @@ export const fetchVotePost = (postId, option) => dispatch =>
     api.votePost(postId, option).then(post => dispatch(votePost(post)));
 
 //vote comment
-export const voteComment = (commentId, option) => ({
+export const voteComment = (commentId) => ({
     type: VOTE_COMMENT,
     commentId
 });

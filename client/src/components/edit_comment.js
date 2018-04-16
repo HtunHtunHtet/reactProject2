@@ -10,7 +10,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 
 class EditComment extends Component {
+    state = {
+        commentAuthor: "",
+        commentContent: ""
+    };
 
+    componentDidMount() {
+        this.props.fetchComment(this.props.match.params.commentId).then(() => {
+            const { author, body } = this.props.receiveComment;
+            this.setState({
+                commentAuthor: author,
+                commentContent: body
+            });
+        });
+    }
 
     render(){
         return(

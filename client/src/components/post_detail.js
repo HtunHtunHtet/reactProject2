@@ -269,7 +269,7 @@ class PostDetail extends Component {
                                                                 secondary={true}
                                                                 onClick={() => this.onDeleteComment(comment.id)}
                                                             />
-                                                            <Link to={`/editComment/${comment.id}`}>
+                                                            <Link to={`/editcomment/${comment.id}`}>
                                                                 <FlatButton
                                                                     icon={<EditChange className="editComment"/>}
                                                                     primary={true}
