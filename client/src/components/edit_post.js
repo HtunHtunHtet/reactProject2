@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEditPost, fetchSinglePost } from "../actions";
 import Menu from './menu';
-import uuidv1 from "uuid/v1";
-
 import AppBar from 'material-ui/AppBar';
-import { Link } from "react-router-dom";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
