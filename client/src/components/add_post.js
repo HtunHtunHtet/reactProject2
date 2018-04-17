@@ -23,7 +23,6 @@ class AddPost extends  Component {
 
     handleSubmit = e =>{
         e.preventDefault();
-        console.log(this.state);
         const data = {
             id: uuidv1(),
             timestamp: Date.now(),

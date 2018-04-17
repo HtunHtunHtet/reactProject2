@@ -41,7 +41,6 @@ class PostDetail extends Component {
 
     componentDidMount() {
         this.props.fetchPost(this.props.match.params.post_id);
-        console.log(this.props.fetchPost(this.props.match.params.post_id));
     }
 
     deletePost = postId => {
