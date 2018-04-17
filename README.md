@@ -9,5 +9,6 @@ SERVER INSTALLATION
 
 
 CLIENT INSTALLATION
-* `npm client`
+* `cd client`
 * `sudo npm install`
+* `npm start`
