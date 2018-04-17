@@ -11,6 +11,3 @@ SERVER INSTALLATION
 CLIENT INSTALLATION
 * `npm client`
 * `sudo npm install`
-* `npm install material-ui`
-* `sudo npm start`
-* `npm install react-pure-grid --save`

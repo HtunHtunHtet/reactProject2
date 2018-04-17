@@ -221,7 +221,7 @@ class PostDetail extends Component {
                                                             <div>
                                                                 <Chip>
                                                                     <Avatar color="#444" icon={<SvgIconFace />} />
-                                                                    {post.author}
+                                                                    {comment.author}
                                                                 </Chip>
                                                             </div>
                                                             <div>

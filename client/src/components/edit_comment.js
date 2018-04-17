@@ -25,9 +25,80 @@ class EditComment extends Component {
         });
     }
 
+    handleInputChange = e => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        const { commentContent, commentAuthor } = this.state;
+        const data = {
+            id: this.props.receiveComment.id,
+            body: commentContent,
+            author: commentAuthor
+        };
+        //Dispatched editComment action with data from form
+        this.props.fetchEditComment(data, data.id);
+        //Redirects back to previous page.
+        this.props.history.goBack();
+    };
+
+
     render(){
+        console.log(this.state);
         return(
-               <div>Testing 234</div>
+            <MuiThemeProvider>
+                <div>
+                    <div className="appbar-wrapper">
+                        <Link to="/">
+                            <AppBar
+                                title="Readable"
+                                iconClassNameRight="muidocs-icon-navigation-expand-more"
+                                onClick = {this.handleToggle}
+                            />
+                        </Link>
+                        <Menu />
+                    </div>
+
+                    <div className="cards-wrapper">
+                        <div className="add-comment-holder">
+                            <h2>Edit Comments</h2>
+                            <form onSubmit={this.handleSubmit} >
+                                <TextField
+                                    floatingLabelText="Author"
+                                    floatingLabelFixed={true}
+                                    fullWidth ={true}
+                                    required={true}
+                                    value={this.state.commentAuthor}
+                                    onChange={this.handleInputChange}
+                                    name="commentAuthor"
+                                    id="author"
+                                />
+
+                                <TextField
+                                    floatingLabelText="Content"
+                                    floatingLabelFixed={true}
+                                    fullWidth ={true}
+                                    required={true}
+                                    value={this.state.commentContent}
+                                    onChange={this.handleInputChange}
+                                    name="commentContent"
+                                    id="content"
+                                    rows={4}
+                                />
+
+                                <RaisedButton type="submit" label="Comment Now!"  primary={true} fullWidth={true}  />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </MuiThemeProvider>
         )
     }
 }
