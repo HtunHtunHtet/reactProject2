@@ -28,6 +28,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Delete from 'material-ui/svg-icons/action/delete';
 import EditChange from 'material-ui/svg-icons/action/track-changes';
+import SortBy from "./sortBy";
+import Comment  from 'material-ui/svg-icons/action/feedback';
+
 
 
 class PostDetail extends Component {
@@ -98,9 +101,8 @@ class PostDetail extends Component {
     render() {
         const { posts } = this.props.posts;
         const { comments } = this.props.getComments;
-        const { sort } = this.props.sort;
 
-        console.log(this.state);
+        console.log("this posts",this.props.posts);
         return (
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
@@ -111,6 +113,8 @@ class PostDetail extends Component {
                         />
                     <Menu/>
                     <div className="cards-wrapper">
+
+                        <SortBy/>
                     {/*switch category*/}
                     {
                         posts && posts.length > 0 &&
@@ -139,6 +143,12 @@ class PostDetail extends Component {
                                                         time={post.timestamp / 1000}
                                                         format="full"
                                                     />
+                                                </Chip>
+                                            </div>
+                                            <div>
+                                                <Chip>
+                                                    <Avatar color="#444" icon={<Comment />} />
+                                                    {comments && comments.length}
                                                 </Chip>
                                             </div>
                                         </div>
