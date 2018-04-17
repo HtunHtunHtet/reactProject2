@@ -104,14 +104,11 @@ class PostDetail extends Component {
         return (
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
-                    <Link to="/">
                         <AppBar
                             title="Readable"
                             iconClassNameRight="muidocs-icon-navigation-expand-more"
-                            onClick = {this.handleToggle}
-                            className = "logoHead"
+                            showMenuIconButton = {false}
                         />
-                    </Link>
                     <Menu/>
                     <div className="cards-wrapper">
                     {/*switch category*/}

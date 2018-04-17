@@ -119,3 +119,19 @@ svg.thumbupdown {
   color:red;
 }
 
+.no-post {
+  text-align:center;
+}
+
+.category-noti-wrapper {
+  display:flex;
+  justify-content: space-between;
+}
+
+.category-info {
+  padding: 20px;
+  border: 1px dotted gray;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: lightsalmon;
+}

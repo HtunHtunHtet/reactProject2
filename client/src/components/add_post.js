@@ -53,13 +53,11 @@ class AddPost extends  Component {
                 <MuiThemeProvider>
                     <div>
                         <div className="appbar-wrapper">
-                            <Link to="/">
                                 <AppBar
                                     title="Readable"
                                     iconClassNameRight="muidocs-icon-navigation-expand-more"
-                                    onClick = {this.handleToggle}
+                                    showMenuIconButton = {false}
                                 />
-                            </Link>
                             <Menu />
                         </div>
                         <div className="cards-wrapper">

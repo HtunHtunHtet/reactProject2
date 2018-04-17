@@ -42,25 +42,31 @@ class Categories extends Component {
     render(){
         const {posts} = this.props.posts;
         const {sort}  = this.props.sort;
+        let { category } = this.props.match.params;
         return (
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
-                    <Link to="/">
                         <AppBar
                             title="Readable"
                             iconClassNameRight="muidocs-icon-navigation-expand-more"
-                            onClick = {this.handleToggle}
-                            className = "logoHead"
+                            showMenuIconButton = {false}
                         />
-                    </Link>
                     <Menu/>
                 </div>
 
                 {/*Cards */}
                 <div className="cards-wrapper">
-                    <SortBy/>
+                    <div className = "category-noti-wrapper">
+                        <div>
+                            <SortBy/>
+                        </div>
+
+                        <div className="category-info">
+                            {`Category: ${category}`}
+                        </div>
+                    </div>
                     {
-                        posts && posts.length > 0 &&
+                        posts && posts.length > 0 ?(
                         posts
                             .filter(post => !post.deleted)
                             .sort((a, b) => {
@@ -173,6 +179,13 @@ class Categories extends Component {
                                     </CardText>
                                 </Card>
                             )
+                        )):(
+                            //display no post notification
+                            <div className="no-posts-holder">
+                                <h3 className="no-post">
+                                    Currently , there is no post in selected category.
+                                </h3>
+                            </div>
                         )
                     }
                     <Link to="/addpost">

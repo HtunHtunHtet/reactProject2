@@ -47,22 +47,20 @@ class HomePage extends Component {
         return(
             <MuiThemeProvider>
                 <div className="appbar-wrapper">
-                   <Link to="/">
                     <AppBar
                         title="Readable"
-                        iconClassNameRight="muidocs-icon-navigation-expand-more"
-                        onClick = {this.handleToggle}
                         className = "logoHead"
+                        showMenuIconButton = {false}
                     />
-                   </Link>
                     <Menu/>
                 </div>
 
                 {/*Cards */}
                 <div className="cards-wrapper">
+
                     <SortBy/>
                     {
-                        posts && posts.length > 0 &&
+                        posts && posts.length > 0 ? (
                         posts
                             .filter(post => !post.deleted)
                             .sort((a, b) => {
@@ -176,7 +174,14 @@ class HomePage extends Component {
                                         </CardText>
                                     </Card>
                                 )
-                            )
+                            )):(
+                            //display no post notification
+                            <div className="no-posts-holder">
+                                <h3 className="no-post">
+                                    Currently , there is no post in selected category.
+                                </h3>
+                            </div>
+                        )
                     }
                     <Link to="/addpost">
                         <FloatingActionButton className="add-post-holder">
