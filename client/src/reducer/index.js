@@ -59,17 +59,6 @@ function posts (state= {} ,action){
                 ...state,
                 posts: updatedPosts
             };
-        case VOTE_COMMENT:
-            const updatedComments = state.comments.map(item => {
-                if (item.id === action.commentId.id) {
-                    item.voteScore = action.commentId.voteScore;
-                }
-                return item;
-            });
-            return {
-                ...state,
-                comments: updatedComments
-            };
         default:
             return state;
     }
@@ -99,6 +88,17 @@ function getComments(state = {}, action) {
             return {
                 ...state,
                 comments: availableComments
+            };
+        case VOTE_COMMENT:
+            const updatedComments = state.comments.map(item => {
+                if (item.id === action.commentId.id) {
+                    item.voteScore = action.commentId.voteScore;
+                }
+                return item;
+            });
+            return {
+                ...state,
+                comments: updatedComments
             };
         default:
             return state;

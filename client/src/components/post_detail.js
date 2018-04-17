@@ -245,7 +245,7 @@ class PostDetail extends Component {
                                                                         className="thumbupdown"
                                                                         color={greenA200}
                                                                         hoverColor={blue500}
-                                                                        onClick={() => this.iconThumbsUpComment(post.id, "upVote")}
+                                                                        onClick={() => this.iconThumbsUpComment(comment.id, "upVote")}
                                                                     />
                                                                 </div>
                                                                 <div>
@@ -258,7 +258,7 @@ class PostDetail extends Component {
                                                                         className="thumbupdown"
                                                                         color={red500}
                                                                         hoverColor={grey800}
-                                                                        onClick={() => this.iconThumbsDownComment(post.id, "downVote")}
+                                                                        onClick={() => this.iconThumbsDownComment(comment.id, "downVote")}
                                                                     />
                                                                 </div>
                                                             </div>
