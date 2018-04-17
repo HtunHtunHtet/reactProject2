@@ -15,15 +15,26 @@ const defaultData = {
     commentCount: 2
   },
   "6ni6ok3ym7mf1p33lnez": {
-    id: '6ni6ok3ym7mf1p33lnez',
-    timestamp: 1468479767190,
-    title: 'Learn Redux in 10 minutes!',
-    body: 'Just kidding. It takes more than 10 minutes to learn technology.',
-    author: 'thingone',
-    category: 'redux',
-    voteScore: -5,
-    deleted: false,
-    commentCount: 0
+      id: '6ni6ok3ym7mf1p33lnez',
+      timestamp: 1468479767190,
+      title: 'Learn Redux in 10 minutes!',
+      body: 'Just kidding. It takes more than 10 minutes to learn technology.',
+      author: 'thingone',
+      category: 'redux',
+      voteScore: -5,
+      deleted: false,
+      commentCount: 0
+  },
+  "7i6ok3yz7mf1p33lnea": {
+      id: '7i6ok3yz7mf1p33lnea',
+      timestamp: 1468479767190,
+      title: 'Python Lessons On Udacity',
+      body: 'going to attend python lessons on udacity',
+      author: 'Ryan Htun',
+      category: 'udacity',
+      voteScore: 10,
+      deleted: false,
+      commentCount: 0
   }
 }
 
